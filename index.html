@@ -3,528 +3,303 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Delizia — Каталог</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+<title>Delizia</title>
 <style>
-:root{--bg:#0E0C0A;--bg2:#161310;--bg3:#1E1A16;--gold:#C9A84C;--gold2:#E8C96A;--gold-dim:#7A6128;--cream:#F0E8D8;--text:#D4C4A8;--muted:#6E5E48;--border:#2A2218;--border2:#3A2E20;--in:#4A7C4A;--in-bg:rgba(74,124,74,0.15);--out:#8B3A1A;--out-bg:rgba(139,58,26,0.15);--r:8px}
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-repeat:repeat;opacity:0.5}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: -apple-system, sans-serif; background: #fafafa; color: #222; padding-bottom: 60px; }
 
-/* HERO */
-.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem 6rem;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 40%,rgba(201,168,76,.07) 0%,transparent 70%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(201,168,76,.04) 0%,transparent 60%),radial-gradient(ellipse 60% 60% at 80% 20%,rgba(201,168,76,.03) 0%,transparent 60%)}
-.hero-lines{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.hero-lines::before,.hero-lines::after{content:'';position:absolute;width:1px;height:100%;background:linear-gradient(to bottom,transparent 0%,rgba(201,168,76,.15) 30%,rgba(201,168,76,.15) 70%,transparent 100%)}
-.hero-lines::before{left:15%}.hero-lines::after{right:15%}
-.hero-inner{position:relative;z-index:1}
-.hero-overline{font-size:10px;font-weight:300;letter-spacing:.5em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:2rem;opacity:0;animation:fadeUp .8s .2s ease forwards}
-.hero-logo{font-family:'Playfair Display',serif;font-size:clamp(5rem,14vw,11rem);font-weight:900;line-height:.9;letter-spacing:-.02em;color:var(--cream);margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .4s ease forwards}
-.hero-logo em{font-style:italic;color:var(--gold);display:block}
-.hero-tagline{font-size:13px;font-weight:200;letter-spacing:.3em;text-transform:uppercase;color:var(--muted);margin-bottom:3rem;opacity:0;animation:fadeUp .8s .6s ease forwards}
-.hero-divider{width:120px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 3rem;opacity:0;animation:fadeUp .8s .7s ease forwards}
-.hero-meta{display:flex;gap:3rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .9s ease forwards}
-.hero-meta-item{display:flex;flex-direction:column;gap:4px}
-.hero-meta-label{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--gold-dim)}
-.hero-meta-value{font-family:'Playfair Display',serif;font-size:18px;color:var(--cream)}
-.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeUp .8s 1.2s ease forwards}
-.scroll-hint span{font-size:9px;letter-spacing:.35em;text-transform:uppercase;color:var(--muted)}
-.scroll-arrow{width:1px;height:40px;background:linear-gradient(to bottom,var(--gold-dim),transparent);animation:scrollPulse 2s infinite}
+.head { background: #1a1610; color: #f5e8c8; padding: 20px 16px; text-align: center; }
+.head h1 { font-size: 32px; font-style: italic; color: #d4a84a; }
+.head p { font-size: 12px; color: #aaa; margin-top: 4px; letter-spacing: 2px; }
 
-/* NAV */
-.nav{position:sticky;top:0;z-index:200;background:rgba(14,12,10,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border2)}
-.nav-inner{max-width:1600px;margin:0 auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:.75rem 1.5rem}
-.nav-logo{font-family:'Playfair Display',serif;font-size:18px;font-style:italic;color:var(--gold);margin-right:6px;white-space:nowrap}
-.search-wrap{flex:1;min-width:140px;max-width:240px;position:relative}
-.search-wrap svg{position:absolute;left:10px;top:50%;transform:translateY(-50%);color:var(--muted);width:14px;height:14px}
-.search-wrap input{width:100%;padding:7px 10px 7px 32px;background:var(--bg3);border:1px solid var(--border2);border-radius:var(--r);font-family:'Jost',sans-serif;font-size:13px;color:var(--text);outline:none;transition:border-color .2s}
-.search-wrap input::placeholder{color:var(--muted)}
-.search-wrap input:focus{border-color:var(--gold-dim)}
-.pills{display:flex;gap:5px;flex-wrap:wrap;flex:1}
-.pill{font-family:'Jost',sans-serif;font-size:11px;font-weight:400;letter-spacing:.05em;padding:5px 12px;border-radius:20px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap}
-.pill:hover{border-color:var(--gold-dim);color:var(--gold)}
-.pill.active{background:var(--gold);color:var(--bg);border-color:var(--gold);font-weight:500}
-.nav-right{display:flex;align-items:center;gap:10px;margin-left:auto}
-.only-in-label{display:flex;align-items:center;gap:6px;font-size:11px;color:var(--muted);cursor:pointer;white-space:nowrap}
-.only-in-label input{accent-color:var(--gold);cursor:pointer}
-.admin-btn{font-family:'Jost',sans-serif;font-size:11px;padding:6px 14px;border-radius:4px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap}
-.admin-btn:hover{border-color:var(--gold-dim);color:var(--gold)}
-.admin-btn.active{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+.controls { background: white; padding: 10px; border-bottom: 1px solid #ddd; position: sticky; top: 0; z-index: 10; }
+.controls input[type=search] { width: 100%; padding: 10px; font-size: 16px; border: 1px solid #ccc; border-radius: 6px; }
+.row2 { display: flex; gap: 8px; margin-top: 8px; align-items: center; flex-wrap: wrap; }
+.row2 select { flex: 1; padding: 8px; font-size: 14px; border: 1px solid #ccc; border-radius: 6px; background: white; min-width: 140px; }
+.row2 label { font-size: 14px; display: flex; align-items: center; gap: 6px; }
 
-/* STATS */
-.stats-wrap{max-width:1600px;margin:0 auto;padding:.75rem 1.5rem;display:flex;gap:24px;flex-wrap:wrap;border-bottom:1px solid var(--border)}
-.stat{font-size:12px;color:var(--muted)}
-.stat strong{color:var(--gold);font-weight:500}
+.stats { padding: 8px 12px; font-size: 13px; color: #666; background: #f0f0f0; border-bottom: 1px solid #ddd; }
+.stats b { color: #1a1610; }
 
-/* MAIN */
-#main-content{max-width:1600px;margin:0 auto;padding-bottom:4rem}
+.sec { background: #1a1610; color: #d4a84a; padding: 10px 14px; font-weight: bold; font-size: 16px; margin-top: 12px; }
 
-/* SECTION */
-.section-head{display:flex;align-items:baseline;gap:16px;padding:3rem 1.5rem 1rem}
-.section-title{font-family:'Playfair Display',serif;font-size:2rem;font-weight:400;font-style:italic;color:var(--cream);letter-spacing:-.01em}
-.section-line{flex:1;height:1px;background:linear-gradient(to right,var(--border2),transparent);margin-bottom:4px}
-.section-count{font-size:11px;letter-spacing:.15em;color:var(--gold-dim)}
+.list { background: white; }
+.item { padding: 12px 14px; border-bottom: 1px solid #eee; display: flex; gap: 12px; align-items: center; }
+.item-pic { width: 60px; height: 60px; flex-shrink: 0; background: #f5f0e6; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 28px; overflow: hidden; }
+.item-pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.item-info { flex: 1; min-width: 0; }
+.item-name { font-weight: 600; font-size: 15px; line-height: 1.3; color: #222; }
+.item-name.hit::before { content: "★ "; color: #d4a84a; }
+.item-weight { font-size: 13px; color: #888; margin-top: 2px; }
+.item-right { text-align: right; flex-shrink: 0; }
+.item-price { font-size: 17px; font-weight: bold; color: #b8862c; white-space: nowrap; }
+.badge { display: inline-block; font-size: 11px; padding: 2px 7px; border-radius: 3px; margin-top: 4px; font-weight: 600; }
+.badge.in { background: #e8f5e8; color: #2e6b2e; }
+.badge.out { background: #f8e8e0; color: #a04020; }
 
-/* GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:1px;background:var(--border);padding:1px;margin:0 1.5rem}
+.gift { padding: 14px; border-bottom: 1px solid #eee; background: white; }
+.gift-name { font-weight: bold; font-size: 16px; color: #222; margin-bottom: 6px; }
+.gift-desc { font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 8px; }
+.gift-bottom { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
+.gift-price { font-size: 18px; font-weight: bold; color: #b8862c; }
+.tg-btn { font-size: 12px; padding: 5px 12px; background: #d4a84a; color: white; text-decoration: none; border-radius: 4px; }
 
-/* CARD */
-.card{background:var(--bg2);display:flex;flex-direction:column;position:relative;overflow:hidden;transition:background .25s;opacity:0;animation:fadeUp .5s ease forwards}
-.card:hover{background:var(--bg3)}
-.card-img-wrap{position:relative;height:180px;overflow:hidden;background:var(--bg3)}
-.card-img-wrap img{width:100%;height:100%;object-fit:contain;padding:16px;transition:transform .5s cubic-bezier(.25,.46,.45,.94);display:block}
-.card:hover .card-img-wrap img{transform:scale(1.07)}
-.card-img-wrap .fallback{width:100%;height:100%;display:none;align-items:center;justify-content:center;font-size:52px;opacity:.25}
-.card-img-wrap::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,0) 0%,rgba(201,168,76,.06) 50%,rgba(201,168,76,0) 100%);opacity:0;transition:opacity .4s}
-.card:hover .card-img-wrap::after{opacity:1}
-.hit-badge{position:absolute;top:10px;left:10px;z-index:2;font-size:9px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;padding:3px 9px;background:var(--gold);color:var(--bg);border-radius:2px}
-.card-edit-btn{display:none;position:absolute;top:10px;right:10px;z-index:3;width:28px;height:28px;background:rgba(14,12,10,.8);border:1px solid var(--gold-dim);border-radius:4px;align-items:center;justify-content:center;cursor:pointer;color:var(--gold);transition:all .2s;font-size:13px}
-.card-edit-btn:hover{background:var(--gold);color:var(--bg)}
-.is-admin .card-edit-btn{display:flex}
-.card-body{padding:14px 16px 15px;flex:1;display:flex;flex-direction:column}
-.card-name{font-family:'Playfair Display',serif;font-size:14px;font-weight:400;color:var(--cream);line-height:1.4;margin-bottom:4px;flex:1}
-.card-weight{font-size:11px;color:var(--muted);letter-spacing:.05em;margin-bottom:12px}
-.card-footer{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.card-price{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--gold);letter-spacing:-.01em}
-.stock-badge{font-size:10px;font-weight:400;letter-spacing:.08em;padding:3px 9px;border-radius:3px;border:1px solid transparent;transition:all .18s;white-space:nowrap;font-family:'Jost',sans-serif}
-.stock-badge.in{background:var(--in-bg);color:#6DBF6D;border-color:rgba(74,124,74,.4)}
-.stock-badge.out{background:var(--out-bg);color:#CF7A5A;border-color:rgba(139,58,26,.4)}
-.stock-badge.editable{cursor:pointer}
-.stock-badge.editable:hover{filter:brightness(1.3);transform:scale(.96)}
+.foot { padding: 24px 16px; text-align: center; font-size: 13px; background: #1a1610; color: #aaa; margin-top: 20px; }
+.foot a { color: #d4a84a; text-decoration: none; }
+.foot h3 { color: #d4a84a; font-style: italic; font-size: 22px; margin-bottom: 10px; }
 
-/* GIFT */
-.gift-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1px;background:var(--border);padding:1px;margin:0 1.5rem}
-.gift-card{background:var(--bg2);padding:1.75rem;display:flex;flex-direction:column;gap:14px;position:relative;overflow:hidden;transition:background .25s;opacity:0;animation:fadeUp .5s ease forwards}
-.gift-card:hover{background:var(--bg3)}
-.gift-card::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,rgba(201,168,76,.3),transparent);opacity:0;transition:opacity .3s}
-.gift-card:hover::before{opacity:1}
-.gift-icon{font-size:2rem}
-.gift-name{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;color:var(--cream)}
-.gift-desc{font-size:13px;color:var(--muted);line-height:1.7;flex:1}
-.gift-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.gift-price{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;color:var(--gold)}
-.gift-footer-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.tg-btn{font-family:'Jost',sans-serif;font-size:11px;letter-spacing:.1em;padding:5px 13px;border:1px solid var(--gold-dim);border-radius:3px;color:var(--gold);text-decoration:none;transition:all .2s}
-.tg-btn:hover{background:var(--gold);color:var(--bg)}
-.gift-edit-btn{display:none;background:transparent;border:1px solid var(--border2);border-radius:4px;padding:5px 9px;font-size:11px;color:var(--muted);cursor:pointer;transition:all .2s;font-family:'Jost',sans-serif}
-.gift-edit-btn:hover{border-color:var(--gold-dim);color:var(--gold)}
-.is-admin .gift-edit-btn{display:inline-flex;align-items:center;gap:5px}
-
-/* MODALS */
-.overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.75);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1rem}
-.overlay.show{display:flex}
-.modal{background:var(--bg2);border:1px solid var(--border2);border-radius:12px;padding:2rem;width:100%;max-width:380px;position:relative;animation:modalIn .25s ease}
-.modal-wide{max-width:520px}
-@keyframes modalIn{from{transform:translateY(20px) scale(.97);opacity:0}to{transform:translateY(0) scale(1);opacity:1}}
-.modal-top{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:1.5rem}
-.modal-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-style:italic;color:var(--cream)}
-.modal-close{background:transparent;border:none;color:var(--muted);cursor:pointer;font-size:18px;padding:4px;transition:color .2s}
-.modal-close:hover{color:var(--cream)}
-.f-group{margin-bottom:1.1rem}
-.f-label{display:block;font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-dim);margin-bottom:6px}
-.f-input,.f-textarea{width:100%;padding:9px 12px;background:var(--bg3);border:1px solid var(--border2);border-radius:6px;font-family:'Jost',sans-serif;font-size:13px;color:var(--cream);outline:none;transition:border-color .2s}
-.f-input::placeholder,.f-textarea::placeholder{color:var(--muted)}
-.f-input:focus,.f-textarea:focus{border-color:var(--gold-dim)}
-.f-textarea{min-height:80px;resize:vertical}
-.img-row{display:flex;gap:8px;align-items:flex-start}
-.img-row .f-input{flex:1}
-.img-preview{width:60px;height:60px;flex-shrink:0;border-radius:6px;overflow:hidden;background:var(--bg3);border:1px solid var(--border2);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--muted)}
-.img-preview img{width:100%;height:100%;object-fit:cover;display:none}
-.modal-error{font-size:12px;color:#CF7A5A;margin-bottom:.75rem;min-height:16px}
-.modal-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:1.5rem}
-.btn-cancel{font-family:'Jost',sans-serif;font-size:13px;padding:8px 18px;border-radius:5px;border:1px solid var(--border2);background:transparent;color:var(--muted);cursor:pointer;transition:all .2s}
-.btn-cancel:hover{color:var(--cream);border-color:var(--muted)}
-.btn-save{font-family:'Jost',sans-serif;font-size:13px;padding:8px 22px;border-radius:5px;border:none;background:var(--gold);color:var(--bg);cursor:pointer;font-weight:500;transition:all .2s}
-.btn-save:hover{background:var(--gold2)}
-
-/* FOOTER */
-.footer{background:var(--bg2);border-top:1px solid var(--border2);padding:3rem 2rem;text-align:center}
-.footer-logo{font-family:'Playfair Display',serif;font-size:2.5rem;font-style:italic;color:var(--gold);margin-bottom:.5rem}
-.footer-divider{width:60px;height:1px;background:linear-gradient(to right,transparent,var(--gold-dim),transparent);margin:0 auto 1rem}
-.footer-info{font-size:13px;color:var(--muted);line-height:2}
-.footer-tg{display:inline-block;margin-top:1.25rem;font-size:12px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid var(--gold-dim);padding-bottom:2px;transition:opacity .2s}
-.footer-tg:hover{opacity:.7}
-.empty{text-align:center;padding:5rem 2rem;color:var(--muted);font-style:italic;font-family:'Playfair Display',serif;font-size:1.2rem}
-.save-flash{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;background:var(--gold);color:var(--bg);font-family:'Jost',sans-serif;font-size:12px;font-weight:500;padding:8px 16px;border-radius:4px;opacity:0;transform:translateY(8px);transition:all .3s;pointer-events:none}
-.save-flash.show{opacity:1;transform:translateY(0)}
-
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes scrollPulse{0%,100%{opacity:.3;transform:scaleY(1)}50%{opacity:1;transform:scaleY(1.15)}}
-
-@media(max-width:700px){
-  .grid{grid-template-columns:repeat(2,1fr);margin:0 .75rem}
-  .gift-grid{grid-template-columns:1fr;margin:0 .75rem}
-  .section-head{padding:2rem .75rem .75rem}
-  .stats-wrap{padding:.6rem .75rem}
-  .nav-inner{padding:.75rem 1rem}
-  .pills{display:none}
-}
+.empty { padding: 40px 20px; text-align: center; color: #999; }
 </style>
 </head>
 <body>
 
-<section class="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-lines"></div>
-  <div class="hero-inner">
-    <p class="hero-overline">Избранная гастрономия из Европы</p>
-    <h1 class="hero-logo"><em>Delizia</em></h1>
-    <p class="hero-tagline">Сыры · Хамон · Масло · Подарочные наборы</p>
-    <div class="hero-divider"></div>
-    <div class="hero-meta">
-      <div class="hero-meta-item"><span class="hero-meta-label">Доставка</span><span class="hero-meta-value">По России</span></div>
-      <div class="hero-meta-item"><span class="hero-meta-label">Заказы</span><span class="hero-meta-value">9:00 — 22:00</span></div>
-      <div class="hero-meta-item"><span class="hero-meta-label">Телеграм</span><span class="hero-meta-value">@DeliziaManager</span></div>
-    </div>
-  </div>
-  <div class="scroll-hint"><span>Каталог</span><div class="scroll-arrow"></div></div>
-</section>
+<div class="head">
+  <h1>Delizia</h1>
+  <p>СЫРЫ · ХАМОН · МАСЛО</p>
+</div>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <span class="nav-logo">Delizia</span>
-    <div class="search-wrap">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="search" placeholder="Поиск...">
-    </div>
-    <div class="pills" id="pills">
-      <button class="pill active" data-cat="all">Всё</button>
-      <button class="pill" data-cat="parm">Пармезан</button>
-      <button class="pill" data-cat="gouda">Гауда</button>
-      <button class="pill" data-cat="brie">Briette</button>
-      <button class="pill" data-cat="brun">Брюност</button>
-      <button class="pill" data-cat="ched">Чеддер</button>
-      <button class="pill" data-cat="other">Другие сыры</button>
-      <button class="pill" data-cat="hamon">Хамон</button>
-      <button class="pill" data-cat="oil">Масло</button>
-      <button class="pill" data-cat="gift">Наборы</button>
-    </div>
-    <div class="nav-right">
-      <label class="only-in-label"><input type="checkbox" id="only-in"> В наличии</label>
-      <button class="admin-btn" id="admin-btn">🔐 Войти</button>
-    </div>
-  </div>
-</nav>
-
-<div class="stats-wrap" id="stats"></div>
-<main id="main-content"></main>
-
-<footer class="footer">
-  <div class="footer-logo">Delizia</div>
-  <div class="footer-divider"></div>
-  <div class="footer-info">ИП Крохин Дмитрий Сергеевич<br>Доставка по Москве и регионам · Яндекс / Ozon / Wildberries</div>
-  <a href="https://t.me/DeliziaManager" class="footer-tg" target="_blank">Оформить заказ в Telegram →</a>
-</footer>
-
-<div class="save-flash" id="save-flash">Сохранено ✓</div>
-
-<!-- Password modal -->
-<div class="overlay" id="modal-pwd">
-  <div class="modal">
-    <div class="modal-top"><span class="modal-title">Вход</span><button class="modal-close" data-close="modal-pwd">✕</button></div>
-    <div class="f-group"><label class="f-label">Пароль администратора</label><input type="password" class="f-input" id="pwd-input" placeholder="••••••••"></div>
-    <div class="modal-error" id="pwd-error"></div>
-    <div class="modal-actions"><button class="btn-cancel" data-close="modal-pwd">Отмена</button><button class="btn-save" id="pwd-submit">Войти</button></div>
+<div class="controls">
+  <input type="search" id="search" placeholder="🔍 Поиск...">
+  <div class="row2">
+    <select id="cat-select">
+      <option value="all">Все категории</option>
+      <option value="parm">Пармезан</option>
+      <option value="gouda">Гауда</option>
+      <option value="brie">Briette</option>
+      <option value="brun">Брюност</option>
+      <option value="ched">Чеддер</option>
+      <option value="other">Другие сыры</option>
+      <option value="hamon">Хамон / Колбаса</option>
+      <option value="oil">Оливковое масло</option>
+      <option value="gift">Подарочные наборы</option>
+    </select>
+    <label><input type="checkbox" id="only-in"> Только в наличии</label>
   </div>
 </div>
 
-<!-- Edit modal -->
-<div class="overlay" id="modal-edit">
-  <div class="modal modal-wide">
-    <div class="modal-top"><span class="modal-title">Редактировать</span><button class="modal-close" data-close="modal-edit">✕</button></div>
-    <input type="hidden" id="edit-id">
-    <input type="hidden" id="edit-type">
-    <div class="f-group"><label class="f-label">Название</label><input type="text" class="f-input" id="edit-name" placeholder="Название товара"></div>
-    <div class="f-group" id="edit-weight-group"><label class="f-label">Вес / объём</label><input type="text" class="f-input" id="edit-weight" placeholder="250г"></div>
-    <div class="f-group"><label class="f-label">Цена</label><input type="text" class="f-input" id="edit-price" placeholder="1 200₽"></div>
-    <div class="f-group" id="edit-desc-group" style="display:none"><label class="f-label">Описание</label><textarea class="f-textarea" id="edit-desc" placeholder="Описание набора..."></textarea></div>
-    <div class="f-group" id="edit-img-group">
-      <label class="f-label">Фото (URL)</label>
-      <div class="img-row">
-        <input type="text" class="f-input" id="edit-img" placeholder="https://...">
-        <div class="img-preview" id="img-preview-box"><img id="img-preview-img" src="" alt=""><span id="img-preview-icon">🧀</span></div>
-      </div>
-      <div style="font-size:11px;color:var(--muted);margin-top:6px">Вставьте ссылку на любое фото из интернета — Google Images, Яндекс и т.д.</div>
-    </div>
-    <div class="modal-actions"><button class="btn-cancel" data-close="modal-edit">Отмена</button><button class="btn-save" id="edit-save">Сохранить</button></div>
-  </div>
+<div class="stats" id="stats"></div>
+<div id="content"></div>
+
+<div class="foot">
+  <h3>Delizia</h3>
+  ИП Крохин Дмитрий Сергеевич<br>
+  Заказы: <a href="https://t.me/DeliziaManager">@DeliziaManager</a><br>
+  9:00 — 22:00 без выходных<br>
+  Доставка: Москва · Яндекс / Ozon / WB
 </div>
 
 <script>
-function h(s){let v=0;for(let i=0;i<s.length;i++)v=(Math.imul(31,v)+s.charCodeAt(i))|0;return Math.abs(v).toString(36);}
-const CORRECT=h("KroDelizia2004");
-const SK="dlz_stock6",AK="dlz_adm6",DK="dlz_data6";
-const WM="https://upload.wikimedia.org/wikipedia/commons/";
-const I={
-  parmesan:WM+"thumb/5/5a/Parmesan_cheese_parmigiano_reggiano.jpg/400px-Parmesan_cheese_parmigiano_reggiano.jpg",
-  grana:WM+"thumb/e/eb/Grana_Padano_01.jpg/400px-Grana_Padano_01.jpg",
-  brunost:WM+"thumb/3/36/Norwegian_Brunost.jpg/400px-Norwegian_Brunost.jpg",
-  brie:WM+"thumb/c/c3/Brie_de_Meaux_1.jpg/400px-Brie_de_Meaux_1.jpg",
-  babybel:WM+"thumb/4/4e/Babybel_1.jpg/400px-Babybel_1.jpg",
-  roquefort:WM+"thumb/d/d0/AOP_Roquefort.jpg/400px-AOP_Roquefort.jpg",
-  gouda:WM+"thumb/5/55/Gouda_cheese.jpg/400px-Gouda_cheese.jpg",
-  tetdemoine:WM+"thumb/d/d3/Tete_de_moine_en_rosettes.jpg/400px-Tete_de_moine_en_rosettes.jpg",
-  pecorino:WM+"thumb/5/5b/Pecorino_romano.jpg/400px-Pecorino_romano.jpg",
-  philly:WM+"thumb/b/b6/Philadelphia_cream_cheese.jpg/400px-Philadelphia_cream_cheese.jpg",
-  cheddar:WM+"thumb/1/18/Cheddar_Cheese_(Cabot).jpg/400px-Cheddar_Cheese_(Cabot).jpg",
-  jamon:WM+"thumb/3/35/Jam%C3%B3n_iberico.jpg/400px-Jam%C3%B3n_iberico.jpg",
-  prosciutto:WM+"thumb/8/8b/Prosciutto_di_parma.jpg/400px-Prosciutto_di_parma.jpg",
-  salami:WM+"thumb/e/e7/Salame_Milano.jpg/400px-Salame_Milano.jpg",
-  foiegras:WM+"thumb/d/d9/Foie_gras_en_cocotte.jpg/400px-Foie_gras_en_cocotte.jpg",
-  oliveoil:WM+"thumb/a/a3/Olive_oil_from_Oneglia.jpg/400px-Olive_oil_from_Oneglia.jpg",
-};
-const DP=[
-  {id:1,name:"Parmigiano Reggiano Мышка 30 месяцев",weight:"250г",price:"1 250₽",cat:"parm",img:I.parmesan,inStock:false},
-  {id:2,name:"Parmigiano Reggiano 30 мес",weight:"250г",price:"1 200₽",cat:"parm",img:I.parmesan,inStock:true},
-  {id:3,name:"Parmigiano Reggiano 36 мес",weight:"250г",price:"1 250₽",cat:"parm",img:I.parmesan,inStock:true},
-  {id:4,name:"Parmigiano Reggiano 40 мес",weight:"250г",price:"1 300₽",cat:"parm",img:I.parmesan,inStock:true},
-  {id:5,name:"Parmigiano Reggiano 48 мес",weight:"250г",price:"1 150₽",cat:"parm",img:I.parmesan,inStock:true},
-  {id:6,name:"Cantarelli Пармезан",weight:"250г",price:"1 100₽",cat:"parm",img:I.parmesan,inStock:true},
-  {id:7,name:"Parmareggio Пармезан 30 мес",weight:"250г",price:"1 250₽",cat:"parm",img:I.parmesan,inStock:false},
-  {id:8,name:"Gran Duca Пармезан",weight:"300г",price:"1 350₽",cat:"parm",img:I.parmesan,inStock:true},
-  {id:9,name:"Grana Padano",weight:"1 кг",price:"2 490₽",cat:"parm",img:I.grana,inStock:true},
-  {id:10,name:"Cantarelli Грана Падано",weight:"250г",price:"1 100₽",cat:"parm",img:I.grana,inStock:true},
-  {id:11,name:"Prima Donna красная",weight:"1 кг",price:"3 000₽",cat:"gouda",img:I.gouda,inStock:true},
-  {id:12,name:"Prima Donna экстра-выдержанная",weight:"1 кг",price:"3 200₽",cat:"gouda",img:I.gouda,inStock:true},
-  {id:13,name:"Old Amsterdam Гауда",weight:"1 кг",price:"3 000₽",cat:"gouda",img:I.gouda,inStock:true},
-  {id:14,name:"Old Rotterdam Гауда",weight:"1 кг",price:"2 900₽",cat:"gouda",img:I.gouda,inStock:true},
-  {id:15,name:"Roemer Light Гауда",weight:"1 кг",price:"2 850₽",cat:"gouda",img:I.gouda,inStock:true},
-  {id:16,name:"Golden Roemer Гауда",weight:"1 кг",price:"3 400₽",cat:"gouda",img:I.gouda,inStock:true},
-  {id:17,name:"Tartufo Гауда с трюфелем",weight:"1 кг",price:"3 100₽",cat:"gouda",img:I.gouda,inStock:true},
-  {id:18,name:"Tartufo Royale",weight:"1 кг",price:"3 200₽",cat:"gouda",img:I.gouda,inStock:true},
-  {id:19,name:"Chevrano Truffle",weight:"1 кг",price:"2 900₽",cat:"gouda",img:I.gouda,inStock:true},
-  {id:20,name:"Rambol с грецкими орехами",weight:"1 кг",price:"2 950₽",cat:"gouda",img:I.gouda,inStock:true},
-  {id:21,name:"Briette Creamy Mild",weight:"125г",price:"490₽",cat:"brie",img:I.brie,inStock:true},
-  {id:22,name:"Briette Creamy Blue",weight:"125г",price:"490₽",cat:"brie",img:I.brie,inStock:true},
-  {id:23,name:"Briette Fine Smoky",weight:"125г",price:"490₽",cat:"brie",img:I.brie,inStock:true},
-  {id:24,name:"Briette Creamy Red",weight:"125г",price:"490₽",cat:"brie",img:I.brie,inStock:true},
-  {id:25,name:"Брюност Gudbrandsdalen",weight:"480г",price:"1 550₽",cat:"brun",img:I.brunost,inStock:true,hit:true},
-  {id:26,name:"Tine Gudbrandsdalen Брюност",weight:"250г",price:"980₽",cat:"brun",img:I.brunost,inStock:true},
-  {id:27,name:"Tine Gudbrandsdalen Брюност",weight:"1 кг",price:"2 750₽",cat:"brun",img:I.brunost,inStock:true},
-  {id:28,name:"Tine Bestemorost Брюност",weight:"500г",price:"1 550₽",cat:"brun",img:I.brunost,inStock:true},
-  {id:29,name:"TINE Ekte Geitost",weight:"250г",price:"980₽",cat:"brun",img:I.brunost,inStock:true},
-  {id:30,name:"Wyke Farms Vintage",weight:"200г",price:"880₽",cat:"ched",img:I.cheddar,inStock:true},
-  {id:31,name:"Wyke Farms Extra Mature",weight:"200г",price:"890₽",cat:"ched",img:I.cheddar,inStock:true},
-  {id:32,name:"Wyke Farms Mild Cheddar",weight:"200г",price:"890₽",cat:"ched",img:I.cheddar,inStock:true},
-  {id:33,name:"Wyke Farms Red Leicester",weight:"200г",price:"890₽",cat:"ched",img:I.cheddar,inStock:true},
-  {id:34,name:"Wyke Farms Mature Cheddar",weight:"200г",price:"890₽",cat:"ched",img:I.cheddar,inStock:true},
-  {id:35,name:"Wyke Farms Mature",weight:"100г",price:"780₽",cat:"ched",img:I.cheddar,inStock:true},
-  {id:36,name:"Käserei Champignon Камамбер",weight:"125г",price:"490₽",cat:"other",img:I.brie,inStock:true},
-  {id:37,name:"Babybel",weight:"60г",price:"450₽",cat:"other",img:I.babybel,inStock:true},
-  {id:38,name:"Рокфор Papillon",weight:"100г",price:"750₽",cat:"other",img:I.roquefort,inStock:true},
-  {id:39,name:"Colla Пекорино Романо",weight:"250г",price:"1 250₽",cat:"other",img:I.pecorino,inStock:true},
-  {id:40,name:"Pinna Пекорино Романо",weight:"200г",price:"1 200₽",cat:"other",img:I.pecorino,inStock:true},
-  {id:41,name:"Тет-де-Муан набор",weight:"400г",price:"2 450₽",cat:"other",img:I.tetdemoine,inStock:true},
-  {id:42,name:"Valio Oltermanni",weight:"250г",price:"750₽",cat:"other",img:I.gouda,inStock:true},
-  {id:43,name:"Fol Epi Classic",weight:"1 кг",price:"2 850₽",cat:"other",img:I.gouda,inStock:true},
-  {id:44,name:"Philadelphia с трюфелем",weight:"200г",price:"750₽",cat:"other",img:I.philly,inStock:true},
-  {id:45,name:"Philadelphia Garlic Herbs",weight:"200г",price:"750₽",cat:"other",img:I.philly,inStock:true},
-  {id:46,name:"Колбаса Elpozo Fuet Iberico",weight:"80г",price:"600₽",cat:"hamon",img:I.salami,inStock:true},
-  {id:47,name:"Колбаса Elpozo Fuet Original",weight:"150г",price:"850₽",cat:"hamon",img:I.salami,inStock:true},
-  {id:48,name:"Колбаса Салями Наполи",weight:"500г",price:"1 950₽",cat:"hamon",img:I.salami,inStock:true},
-  {id:49,name:"Колбаса Салями Негрони Милано",weight:"400г",price:"1 850₽",cat:"hamon",img:I.salami,inStock:true},
-  {id:50,name:"Хамон Rodriguez нарезка",weight:"500г",price:"1 950₽",cat:"hamon",img:I.jamon,inStock:true,hit:true},
-  {id:51,name:"Хамон Rodriguez нарезка",weight:"100г",price:"750₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:52,name:"Хамон Rodriguez нарезка",weight:"250г",price:"1 100₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:53,name:"Хамон Rodriguez блок",weight:"1 кг",price:"2 900₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:54,name:"Хамон Родригес Нога",weight:"6 кг",price:"19 000₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:55,name:"Хамон Родригес Нога Иберико",weight:"4 кг",price:"20 000₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:56,name:"Хамон Альма Серрано нарезка",weight:"500г",price:"1 950₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:57,name:"Хамон Нико Иберико",weight:"950г",price:"5 400₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:58,name:"Хамон Нико Серрано",weight:"950г",price:"4 400₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:59,name:"Хамон Лапериа Трюфель",weight:"950г",price:"5 700₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:60,name:"Хамон Лапериа Резерва",weight:"950г",price:"4 300₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:61,name:"Хамон Sotoviejo Иберико",weight:"950г",price:"5 700₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:62,name:"Хамон Ассорти",weight:"250г",price:"1 500₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:63,name:"Хамон Леянда Серрано",weight:"100г",price:"530₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:64,name:"Хамон Элпозо Серрано",weight:"80г",price:"550₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:65,name:"Хамон Понто Нога б/к",weight:"5 кг",price:"15 000₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:66,name:"Estrella de Castilla нарезка",weight:"100г",price:"700₽",cat:"hamon",img:I.jamon,inStock:true},
-  {id:67,name:"Прошутто Крудо блок",weight:"1 кг",price:"2 700₽",cat:"hamon",img:I.prosciutto,inStock:true},
-  {id:68,name:"Прошутто Villani Parma",weight:"1 кг",price:"2 600₽",cat:"hamon",img:I.prosciutto,inStock:true},
-  {id:69,name:"Прошутто Нога Крудо",weight:"1 кг",price:"2 400₽",cat:"hamon",img:I.prosciutto,inStock:true},
-  {id:70,name:"Прошутто Villani Трюфель",weight:"1 кг",price:"2 750₽",cat:"hamon",img:I.prosciutto,inStock:true},
-  {id:71,name:"Фуа-гра утиная",weight:"250г",price:"950₽",cat:"hamon",img:I.foiegras,inStock:true},
-  {id:72,name:"Akropol Extra Virgin",weight:"5000мл",price:"4 800₽",cat:"oil",img:I.oliveoil,inStock:true},
-  {id:73,name:"Akropol Extra Virgin",weight:"1000мл",price:"1 100₽",cat:"oil",img:I.oliveoil,inStock:true},
-  {id:74,name:"Akropol Extra Virgin",weight:"500мл",price:"650₽",cat:"oil",img:I.oliveoil,inStock:true},
-  {id:75,name:"Akropol Extra Virgin",weight:"250мл",price:"350₽",cat:"oil",img:I.oliveoil,inStock:true},
-  {id:76,name:"Akropol Classic",weight:"1000мл",price:"1 100₽",cat:"oil",img:I.oliveoil,inStock:true},
-  {id:77,name:"Alikante Extra Virgin",weight:"1000мл",price:"1 100₽",cat:"oil",img:I.oliveoil,inStock:true},
-  {id:78,name:"Alikante Classic",weight:"1000мл",price:"1 100₽",cat:"oil",img:I.oliveoil,inStock:true},
-  {id:79,name:"Veloudo Extra Virgin",weight:"1000мл",price:"1 100₽",cat:"oil",img:I.oliveoil,inStock:true},
-  {id:80,name:"Veloudo Classic",weight:"1000мл",price:"1 100₽",cat:"oil",img:I.oliveoil,inStock:true},
+/* =======================================================================
+   ЗДЕСЬ ВСЕ ТОВАРЫ. Чтобы изменить:
+   - n: "название"  — название товара
+   - w: "вес"       — вес или объём
+   - p: "цена"      — цена БЕЗ ₽ (рубль добавится сам)
+   - s: true        — есть в наличии (false = нет)
+   - img: "images/имя.jpg" — путь к фото (если нет — будет иконка)
+   - hit: 1         — пометка "Хит" (можно удалить)
+   ВАЖНО: НЕ удаляй кавычки и запятые!
+   ======================================================================= */
+
+var PRODS = [
+  {id:1, n:"Parmigiano Reggiano", w:"250г", p:"1 250", c:"parm", s:false},
+  {id:2, n:"Parmigiano Reggiano 30 мес", w:"250г", p:"1 200", c:"parm", s:true},
+  {id:3, n:"Parmigiano Reggiano 36 мес", w:"250г", p:"1 250", c:"parm", s:true},
+  {id:4, n:"Parmigiano Reggiano 40 мес", w:"250г", p:"1 300", c:"parm", s:true},
+  {id:5, n:"Parmigiano Reggiano 48 мес", w:"250г", p:"1 150", c:"parm", s:true},
+  {id:6, n:"Parmigiano Reggiano 60 мес", w:"250г", p:"1 400", c:"parm", s:true},
+  {id:7, n:"Cantarelli Пармезан", w:"250г", p:"1 100", c:"parm", s:true},
+  {id:8, n:"Parmareggio Пармезан 30 мес", w:"250г", p:"1 250", c:"parm", s:false},
+  {id:9, n:"Gran Duca Пармезан", w:"300г", p:"1 350", c:"parm", s:true},
+  {id:10, n:"Grana Padano", w:"1 кг", p:"2 490", c:"parm", s:true},
+  {id:11, n:"Cantarelli Грана Падано", w:"250г", p:"1 100", c:"parm", s:true},
+  {id:12, n:"Prima Donna красная", w:"1 кг", p:"3 000", c:"gouda", s:true},
+  {id:13, n:"Prima Donna экстра-выдержанная", w:"1 кг", p:"3 200", c:"gouda", s:true},
+  {id:14, n:"Old Amsterdam", w:"1 кг", p:"3 000", c:"gouda", s:true},
+  {id:15, n:"Old Rotterdam", w:"1 кг", p:"2 900", c:"gouda", s:true},
+  {id:16, n:"Roemer Light", w:"1 кг", p:"2 850", c:"gouda", s:true},
+  {id:17, n:"Golden Roemer", w:"1 кг", p:"3 400", c:"gouda", s:true},
+  {id:18, n:"Tartufo с трюфелем", w:"1 кг", p:"3 100", c:"gouda", s:true},
+  {id:19, n:"Tartufo Royale", w:"1 кг", p:"3 200", c:"gouda", s:true},
+  {id:20, n:"Chevrano Truffle", w:"1 кг", p:"2 900", c:"gouda", s:true},
+  {id:21, n:"Rambol с грецкими орехами", w:"1 кг", p:"2 950", c:"gouda", s:true},
+  {id:22, n:"Briette Creamy Mild", w:"125г", p:"490", c:"brie", s:true},
+  {id:23, n:"Briette Creamy Blue", w:"125г", p:"490", c:"brie", s:true},
+  {id:24, n:"Briette Fine Smoky", w:"125г", p:"490", c:"brie", s:true},
+  {id:25, n:"Briette Creamy Red", w:"125г", p:"490", c:"brie", s:true},
+  {id:26, n:"Брюност Gudbrandsdalen", w:"480г", p:"1 550", c:"brun", s:true, hit:1},
+  {id:27, n:"Tine Gudbrandsdalen Брюност", w:"250г", p:"980", c:"brun", s:true},
+  {id:28, n:"Tine Gudbrandsdalen Брюност", w:"1 кг", p:"2 750", c:"brun", s:true},
+  {id:29, n:"Tine Bestemorost", w:"500г", p:"1 550", c:"brun", s:true},
+  {id:30, n:"TINE Ekte Geitost", w:"250г", p:"980", c:"brun", s:true},
+  {id:31, n:"Wyke Farms Vintage", w:"200г", p:"880", c:"ched", s:true},
+  {id:32, n:"Wyke Farms Extra Mature", w:"200г", p:"890", c:"ched", s:true},
+  {id:33, n:"Wyke Farms Mild Cheddar", w:"200г", p:"890", c:"ched", s:true},
+  {id:34, n:"Wyke Farms Red Leicester", w:"200г", p:"890", c:"ched", s:true},
+  {id:35, n:"Wyke Farms Mature Cheddar", w:"200г", p:"890", c:"ched", s:true},
+  {id:36, n:"Wyke Farms Mature", w:"100г", p:"780", c:"ched", s:true},
+  {id:37, n:"Käserei Champignon Камамбер", w:"125г", p:"490", c:"other", s:true},
+  {id:38, n:"Babybel", w:"60г", p:"450", c:"other", s:true},
+  {id:39, n:"Рокфор Papillon", w:"100г", p:"750", c:"other", s:true},
+  {id:40, n:"Colla Пекорино Романо", w:"250г", p:"1 250", c:"other", s:true},
+  {id:41, n:"Pinna Пекорино Романо", w:"200г", p:"1 200", c:"other", s:true},
+  {id:42, n:"Тет-де-Муан набор", w:"400г", p:"2 450", c:"other", s:true},
+  {id:43, n:"Valio Oltermanni", w:"250г", p:"750", c:"other", s:true},
+  {id:44, n:"Fol Epi Classic", w:"1 кг", p:"2 850", c:"other", s:true},
+  {id:45, n:"Philadelphia с трюфелем", w:"200г", p:"750", c:"other", s:true},
+  {id:46, n:"Philadelphia Garlic Herbs", w:"200г", p:"750", c:"other", s:true},
+  {id:47, n:"Saint Agur Crème", w:"150г", p:"590", c:"other", s:true},
+  {id:48, n:"Chavroux козий сыр", w:"150г", p:"490", c:"other", s:true},
+  {id:50, n:"Хамон Rodriguez нарезка", w:"100г", p:"750", c:"hamon", s:true},
+  {id:51, n:"Хамон Rodriguez нарезка", w:"250г", p:"1 100", c:"hamon", s:true},
+  {id:52, n:"Хамон Rodriguez нарезка", w:"500г", p:"1 950", c:"hamon", s:true, hit:1},
+  {id:53, n:"Хамон Rodriguez блок", w:"1 кг", p:"2 900", c:"hamon", s:true},
+  {id:54, n:"Хамон Родригес Нога", w:"6 кг", p:"19 000", c:"hamon", s:true},
+  {id:55, n:"Хамон Родригес Нога Иберико", w:"4 кг", p:"20 000", c:"hamon", s:true},
+  {id:56, n:"Хамон Альма Серрано нарезка", w:"500г", p:"1 950", c:"hamon", s:true},
+  {id:57, n:"Хамон Нико Иберико", w:"950г", p:"5 400", c:"hamon", s:true},
+  {id:58, n:"Хамон Нико Серрано", w:"950г", p:"4 400", c:"hamon", s:true},
+  {id:59, n:"Хамон Лапериа Трюфель", w:"950г", p:"5 700", c:"hamon", s:true},
+  {id:60, n:"Хамон Лапериа Резерва", w:"950г", p:"4 300", c:"hamon", s:true},
+  {id:61, n:"Хамон Sotoviejo Иберико", w:"950г", p:"5 700", c:"hamon", s:true},
+  {id:62, n:"Хамон Сотовиехо Иберико", w:"950г", p:"5 500", c:"hamon", s:true},
+  {id:63, n:"Хамон Ассорти", w:"250г", p:"1 500", c:"hamon", s:true},
+  {id:64, n:"Хамон Леянда Серрано", w:"100г", p:"530", c:"hamon", s:true},
+  {id:65, n:"Хамон Элпозо Серрано", w:"80г", p:"550", c:"hamon", s:true},
+  {id:66, n:"Хамон Понто Нога б/к", w:"5 кг", p:"15 000", c:"hamon", s:true},
+  {id:67, n:"Nico Iberico набор", w:"950г", p:"5 700", c:"hamon", s:true},
+  {id:68, n:"Estrella de Castilla нарезка", w:"100г", p:"700", c:"hamon", s:true},
+  {id:69, n:"Прошутто Крудо блок", w:"1 кг", p:"2 700", c:"hamon", s:true},
+  {id:70, n:"Прошутто Villani Parma", w:"1 кг", p:"2 600", c:"hamon", s:true},
+  {id:71, n:"Прошутто Нога Крудо", w:"1 кг", p:"2 400", c:"hamon", s:true},
+  {id:72, n:"Прошутто Villani Трюфель", w:"1 кг", p:"2 750", c:"hamon", s:true},
+  {id:73, n:"Фуа-гра утиная", w:"250г", p:"950", c:"hamon", s:true},
+  {id:74, n:"Колбаса Elpozo Fuet Iberico", w:"80г", p:"600", c:"hamon", s:true},
+  {id:75, n:"Колбаса Elpozo Fuet Original", w:"150г", p:"850", c:"hamon", s:true},
+  {id:76, n:"Колбаса Салями Наполи", w:"500г", p:"1 950", c:"hamon", s:true},
+  {id:77, n:"Колбаса Салями Негрони Милано", w:"400г", p:"1 850", c:"hamon", s:true},
+  {id:80, n:"Akropol Extra Virgin", w:"250 мл", p:"350", c:"oil", s:true},
+  {id:81, n:"Akropol Extra Virgin", w:"500 мл", p:"650", c:"oil", s:true},
+  {id:82, n:"Akropol Extra Virgin", w:"1000 мл", p:"1 100", c:"oil", s:true},
+  {id:83, n:"Akropol Extra Virgin", w:"5000 мл", p:"4 800", c:"oil", s:true},
+  {id:84, n:"Akropol Classic", w:"250 мл", p:"350", c:"oil", s:true},
+  {id:85, n:"Akropol Classic", w:"500 мл", p:"650", c:"oil", s:true},
+  {id:86, n:"Akropol Classic", w:"1000 мл", p:"1 100", c:"oil", s:true},
+  {id:87, n:"Akropol Classic", w:"5000 мл", p:"4 800", c:"oil", s:true},
+  {id:88, n:"Alikante Extra Virgin", w:"1000 мл", p:"1 100", c:"oil", s:true},
+  {id:89, n:"Alikante Classic", w:"1000 мл", p:"1 100", c:"oil", s:true},
+  {id:90, n:"Veloudo Extra Virgin", w:"1000 мл", p:"1 100", c:"oil", s:true},
+  {id:91, n:"Veloudo Extra Virgin", w:"5000 мл", p:"4 800", c:"oil", s:true},
+  {id:92, n:"Veloudo Classic", w:"1000 мл", p:"1 100", c:"oil", s:true},
+  {id:93, n:"Veloudo Classic", w:"5000 мл", p:"4 800", c:"oil", s:true}
 ];
-const DG=[
-  {id:201,name:"Casa Delizia",price:"4 900₽",icon:"🎁",desc:"Briette + Babybel + выдержанный чеддер Wyke + итальянский пармезан. Мягкие сливочные ноты до благородной выдержанности.",inStock:true},
-  {id:202,name:"Delizia Classic",price:"7 500₽",icon:"🎁",desc:"Philadelphia с трюфелем + Брюност + Saint Agur Crème + Wyke + пармезан 30 мес + Babybel + оливковое масло.",inStock:true},
-  {id:203,name:"Delizia Aperta",price:"8 900₽",icon:"🎁",desc:"Несколько видов Wyke + пармезан 30 и 40 мес + Chavroux + Babybel + Брюност + хамон Rodriguez. Набор без крышки.",inStock:true},
-  {id:204,name:"Корзина «Grande»",price:"12 500₽",icon:"🧺",desc:"Parmigiano Reggiano DOP 60 мес + Jamón Serrano Rodriguez + 2 чеддера Wyke Farms + Бри + Philadelphia + Briette + оливковое масло.",inStock:true},
-  {id:205,name:"Корзина «Media»",price:"8 300₽",icon:"🧺",desc:"Пармезан 40 мес Cantarelli + Briette + Brie + Philadelphia + 2 пармезана 30 мес + хамон Serrano Rodriguez.",inStock:true},
-  {id:206,name:"Корзина «Gurmano»",price:"6 200₽",icon:"🧺",desc:"Parmigiano Reggiano DOP 60 и 40 мес + Бри + хамон Serrano Rodriguez + Babybel.",inStock:true},
-  {id:207,name:"Корзина «Universale»",price:"5 200₽",icon:"🧺",desc:"Чеддер Wyke + Parmigiano Reggiano 30 мес + Хамон Serrano + Philadelphia с травами + оливковое масло.",inStock:true},
-  {id:208,name:"Корзина «Dolce»",price:"4 400₽",icon:"🧺",desc:"Wyke Farms Extra Mature + Briette + Babybel + хамон Serrano + оливковое масло.",inStock:true},
-  {id:209,name:"Корзина «Delicato»",price:"6 300₽",icon:"🧺",desc:"Parmigiano Reggiano DOP 40 и 60 мес + Chavroux козий сыр + хамон Serrano Rodriguez + оливковое масло.",inStock:true},
+
+var GIFTS = [
+  {id:201, n:"Casa Delizia", p:"4 900", d:"Briette + Babybel + чеддер Wyke + итальянский пармезан. Сливочные ноты до благородной выдержанности.", s:true},
+  {id:202, n:"Delizia Classic", p:"7 500", d:"Philadelphia с трюфелем + Брюност + Saint Agur Crème + Wyke + пармезан 30 мес + Babybel + оливковое масло.", s:true},
+  {id:203, n:"Delizia Aperta", p:"8 900", d:"Wyke + пармезан 30 и 40 мес + Chavroux + Babybel + Брюност + хамон Rodriguez. Набор без крышки.", s:true},
+  {id:204, n:"Корзина «Grande»", p:"12 500", d:"Parmigiano DOP 60 мес + Jamón Serrano + 2 чеддера Wyke + Бри + Philadelphia + Briette + оливковое масло.", s:true},
+  {id:205, n:"Корзина «Media»", p:"8 300", d:"Пармезан 40 мес Cantarelli + Briette + Brie + Philadelphia + пармезан 30 мес + хамон Serrano.", s:true},
+  {id:206, n:"Корзина «Gurmano»", p:"6 200", d:"Parmigiano DOP 60 и 40 мес + Бри + хамон Serrano Rodriguez + Babybel.", s:true},
+  {id:207, n:"Корзина «Universale»", p:"5 200", d:"Чеддер Wyke + Parmigiano 30 мес + хамон Serrano + Philadelphia с травами + оливковое масло.", s:true},
+  {id:208, n:"Корзина «Dolce»", p:"4 400", d:"Wyke Farms Extra Mature + Briette + Babybel + хамон Serrano + оливковое масло.", s:true},
+  {id:209, n:"Корзина «Delicato»", p:"6 300", d:"Parmigiano DOP 40 и 60 мес + Chavroux козий сыр + хамон Serrano Rodriguez + оливковое масло.", s:true}
 ];
-const CL={parm:"Пармезан",gouda:"Гауда",brie:"Briette",brun:"Брюност",ched:"Чеддер",other:"Другие сыры",hamon:"Хамон / Колбаса",oil:"Оливковое масло"};
-const CO=["parm","gouda","brie","brun","ched","other","hamon","oil"];
-const CI={parm:"🧇",gouda:"🧀",brie:"🫙",brun:"🟫",ched:"🇬🇧",other:"🫧",hamon:"🥩",oil:"🫒"};
 
-let stock={},edited={},isAdmin=false;
-let cat="all",q="",onlyIn=false;
-try{stock=JSON.parse(localStorage.getItem(SK)||"{}");}catch(e){}
-try{edited=JSON.parse(localStorage.getItem(DK)||"{}");}catch(e){}
-try{isAdmin=localStorage.getItem(AK)===CORRECT;}catch(e){}
+var CL = {parm:"Пармезан", gouda:"Гауда", brie:"Briette", brun:"Брюност", ched:"Чеддер", other:"Другие сыры", hamon:"Хамон / Колбаса", oil:"Оливковое масло"};
+var CORD = ["parm","gouda","brie","brun","ched","other","hamon","oil"];
+var ICONS = {parm:"🧇", gouda:"🧀", brie:"🫙", brun:"🟫", ched:"🧀", other:"🫧", hamon:"🥩", oil:"🫒"};
 
-function gs(id){if(stock[id]!==undefined)return stock[id];return([...DP,...DG].find(x=>x.id===id)||{inStock:true}).inStock;}
-function ss(id,v){stock[id]=v;try{localStorage.setItem(SK,JSON.stringify(stock));}catch(e){}flash();}
-function gd(id){const b=[...DP,...DG].find(x=>x.id===id)||{};return{...b,...(edited[id]||{})};}
-function sd(id,p){edited[id]={...(edited[id]||{}),...p};try{localStorage.setItem(DK,JSON.stringify(edited));}catch(e){};}
+var cat = "all", q = "", only = false;
 
-function flash(){const e=document.getElementById("save-flash");e.classList.add("show");setTimeout(()=>e.classList.remove("show"),1800);}
+function esc(s) { return String(s).replace(/[&<>"]/g, function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 
-function badge(id){const s=gs(id);return`<span class="stock-badge ${s?'in':'out'} ${isAdmin?'editable':''}" data-sid="${id}">${s?'✓ В наличии':'✗ Нет'}</span>`;}
+function render() {
+  var content = document.getElementById("content");
+  var statsEl = document.getElementById("stats");
+  var html = "";
 
-function cardH(p,dl){
-  const d=gd(p.id);
-  const fb=p.cat==='hamon'?'🥩':p.cat==='oil'?'🫒':'🧀';
-  return`<div class="card" style="animation-delay:${dl}ms">
-    <div class="card-img-wrap">
-      ${d.hit||p.hit?'<span class="hit-badge">Хит</span>':''}
-      <button class="card-edit-btn" data-edit="${p.id}" data-type="product">✏️</button>
-      <img src="${d.img||p.img}" alt="${d.name||p.name}" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-      <div class="fallback" style="display:none">${fb}</div>
-    </div>
-    <div class="card-body">
-      <div class="card-name">${d.name||p.name}</div>
-      <div class="card-weight">${d.weight||p.weight}</div>
-      <div class="card-footer"><span class="card-price">${d.price||p.price}</span>${badge(p.id)}</div>
-    </div>
-  </div>`;}
-
-function giftH(g,dl){
-  const d=gd(g.id);
-  return`<div class="gift-card" style="animation-delay:${dl}ms">
-    <div class="gift-icon">${g.icon}</div>
-    <div class="gift-name">${d.name||g.name}</div>
-    <div class="gift-desc">${d.desc||g.desc}</div>
-    <div class="gift-footer">
-      <span class="gift-price">${d.price||g.price}</span>
-      <div class="gift-footer-right">
-        ${badge(g.id)}
-        <button class="gift-edit-btn" data-edit="${g.id}" data-type="gift">✏️ Изменить</button>
-        <a href="https://t.me/DeliziaManager" class="tg-btn" target="_blank">Заказать</a>
-      </div>
-    </div>
-  </div>`;}
-
-function render(){
-  const sg=cat==="all"||cat==="gift";
-  const sp=cat!=="gift";
-  let fp=sp?DP.filter(p=>{
-    const d=gd(p.id);
-    return(cat==="all"||p.cat===cat)&&(!q||(d.name||p.name).toLowerCase().includes(q.toLowerCase()))&&(!onlyIn||gs(p.id));
-  }):[];
-  let fg=sg?DG.filter(g=>{
-    const d=gd(g.id);
-    return(!q||(d.name||g.name).toLowerCase().includes(q.toLowerCase()))&&(!onlyIn||gs(g.id));
-  }):[];
-  const tot=fp.length+fg.length;
-  const inc=fp.filter(p=>gs(p.id)).length+fg.filter(g=>gs(g.id)).length;
-  document.getElementById("stats").innerHTML=
-    `<span class="stat">Позиций: <strong>${tot}</strong></span>
-     <span class="stat">В наличии: <strong>${inc}</strong></span>
-     <span class="stat">Нет в наличии: <strong>${tot-inc}</strong></span>
-     ${isAdmin?'<span class="stat" style="color:var(--gold)">✏️ Режим администратора</span>':''}`;
-  if(!tot){document.getElementById("main-content").innerHTML='<div class="empty">Ничего не найдено…</div>';return;}
-  let html="",dl=0;
-  if(fp.length){
-    const cats=cat==="all"?CO.filter(c=>fp.some(p=>p.cat===c)):[cat];
-    cats.forEach(c=>{
-      const items=fp.filter(p=>p.cat===c);
-      if(!items.length)return;
-      html+=`<div class="section-head"><span class="section-title">${CI[c]} ${CL[c]}</span><div class="section-line"></div><span class="section-count">${items.length} позиций</span></div><div class="grid">`;
-      items.forEach(p=>{html+=cardH(p,dl%8*50);dl++;});
-      html+=`</div>`;
-    });
-  }
-  if(fg.length){
-    html+=`<div class="section-head"><span class="section-title">🎁 Подарочные наборы</span><div class="section-line"></div><span class="section-count">${fg.length} наборов</span></div><div class="gift-grid">`;
-    fg.forEach((g,i)=>{html+=giftH(g,i*60);});
-    html+=`</div>`;
-  }
-  document.getElementById("main-content").innerHTML=html;
-  if(isAdmin)document.body.classList.add("is-admin");else document.body.classList.remove("is-admin");
-  document.querySelectorAll(".stock-badge.editable").forEach(el=>{
-    el.addEventListener("click",()=>{ss(parseInt(el.dataset.sid),!gs(parseInt(el.dataset.sid)));render();});
+  var fp = (cat === "gift") ? [] : PRODS.filter(function(p) {
+    var catOk = (cat === "all" || p.c === cat);
+    var searchOk = (!q || p.n.toLowerCase().indexOf(q.toLowerCase()) !== -1);
+    var stockOk = (!only || p.s);
+    return catOk && searchOk && stockOk;
   });
-  document.querySelectorAll("[data-edit]").forEach(el=>{
-    el.addEventListener("click",e=>{e.stopPropagation();openEdit(parseInt(el.dataset.edit),el.dataset.type);});
+
+  var fg = (cat !== "all" && cat !== "gift") ? [] : GIFTS.filter(function(g) {
+    var searchOk = (!q || g.n.toLowerCase().indexOf(q.toLowerCase()) !== -1);
+    var stockOk = (!only || g.s);
+    return searchOk && stockOk;
   });
+
+  var total = fp.length + fg.length;
+  var inCount = 0;
+  for (var i=0; i<fp.length; i++) if (fp[i].s) inCount++;
+  for (var i=0; i<fg.length; i++) if (fg[i].s) inCount++;
+
+  statsEl.innerHTML = "Всего: <b>" + total + "</b> · В наличии: <b>" + inCount + "</b> · Нет: <b>" + (total - inCount) + "</b>";
+
+  if (total === 0) {
+    content.innerHTML = '<div class="empty">Ничего не найдено</div>';
+    return;
+  }
+
+  if (fp.length) {
+    var cats = (cat === "all") ? CORD.filter(function(c){ return fp.some(function(p){return p.c===c;}); }) : [cat];
+    for (var ci=0; ci<cats.length; ci++) {
+      var c = cats[ci];
+      var items = fp.filter(function(p){ return p.c === c; });
+      if (!items.length) continue;
+      html += '<div class="sec">' + esc(CL[c]) + ' <span style="float:right;font-weight:normal;font-size:13px">' + items.length + '</span></div>';
+      html += '<div class="list">';
+      for (var i=0; i<items.length; i++) {
+        var p = items[i];
+        var inS = p.s;
+        var pic;
+        if (p.img) {
+          pic = '<img src="' + esc(p.img) + '" alt="" onerror="this.parentNode.innerHTML=\'' + ICONS[p.c] + '\'">';
+        } else {
+          pic = ICONS[p.c];
+        }
+        html += '<div class="item">';
+        html += '<div class="item-pic">' + pic + '</div>';
+        html += '<div class="item-info">';
+        html += '<div class="item-name' + (p.hit ? ' hit' : '') + '">' + esc(p.n) + '</div>';
+        html += '<div class="item-weight">' + esc(p.w) + '</div>';
+        html += '<span class="badge ' + (inS ? 'in' : 'out') + '">' + (inS ? '✓ В наличии' : '✗ Нет') + '</span>';
+        html += '</div>';
+        html += '<div class="item-right"><div class="item-price">' + esc(p.p) + ' ₽</div></div>';
+        html += '</div>';
+      }
+      html += '</div>';
+    }
+  }
+
+  if (fg.length) {
+    html += '<div class="sec">🎁 Подарочные наборы <span style="float:right;font-weight:normal;font-size:13px">' + fg.length + '</span></div>';
+    for (var i=0; i<fg.length; i++) {
+      var g = fg[i];
+      var inS = g.s;
+      html += '<div class="gift">';
+      html += '<div class="gift-name">' + esc(g.n) + '</div>';
+      html += '<div class="gift-desc">' + esc(g.d) + '</div>';
+      html += '<div class="gift-bottom">';
+      html += '<div class="gift-price">' + esc(g.p) + ' ₽</div>';
+      html += '<div>';
+      html += '<span class="badge ' + (inS ? 'in' : 'out') + '">' + (inS ? '✓ Есть' : '✗ Нет') + '</span> ';
+      html += '<a class="tg-btn" href="https://t.me/DeliziaManager">Заказать</a>';
+      html += '</div>';
+      html += '</div></div>';
+    }
+  }
+
+  content.innerHTML = html;
 }
 
-function updAdmin(){
-  const b=document.getElementById("admin-btn");
-  if(isAdmin){b.textContent="🔓 Выйти";b.classList.add("active");document.body.classList.add("is-admin");}
-  else{b.textContent="🔐 Войти";b.classList.remove("active");document.body.classList.remove("is-admin");}
-}
+document.getElementById("cat-select").addEventListener("change", function(e){ cat = e.target.value; render(); });
+document.getElementById("search").addEventListener("input", function(e){ q = e.target.value; render(); });
+document.getElementById("only-in").addEventListener("change", function(e){ only = e.target.checked; render(); });
 
-function openEdit(id,type){
-  const d=gd(id);
-  document.getElementById("edit-id").value=id;
-  document.getElementById("edit-type").value=type;
-  document.getElementById("edit-name").value=d.name||"";
-  document.getElementById("edit-price").value=d.price||"";
-  const wg=document.getElementById("edit-weight-group");
-  const dg=document.getElementById("edit-desc-group");
-  const ig=document.getElementById("edit-img-group");
-  if(type==="gift"){wg.style.display="none";dg.style.display="block";ig.style.display="none";document.getElementById("edit-desc").value=d.desc||"";}
-  else{wg.style.display="block";dg.style.display="none";ig.style.display="block";document.getElementById("edit-weight").value=d.weight||"";document.getElementById("edit-img").value=d.img||"";updPrev(d.img||"");}
-  openM("modal-edit");
-}
-function updPrev(url){
-  const img=document.getElementById("img-preview-img");
-  const icon=document.getElementById("img-preview-icon");
-  if(url){img.src=url;img.style.display="block";icon.style.display="none";img.onerror=()=>{img.style.display="none";icon.style.display="";};}
-  else{img.style.display="none";icon.style.display="";}
-}
-document.getElementById("edit-img").addEventListener("input",e=>updPrev(e.target.value));
-document.getElementById("edit-save").addEventListener("click",()=>{
-  const id=parseInt(document.getElementById("edit-id").value);
-  const type=document.getElementById("edit-type").value;
-  const p={name:document.getElementById("edit-name").value.trim(),price:document.getElementById("edit-price").value.trim()};
-  if(type==="product"){p.weight=document.getElementById("edit-weight").value.trim();p.img=document.getElementById("edit-img").value.trim();}
-  else{p.desc=document.getElementById("edit-desc").value.trim();}
-  sd(id,p);closeM("modal-edit");render();flash();
-});
-
-document.getElementById("admin-btn").addEventListener("click",()=>{
-  if(isAdmin){isAdmin=false;try{localStorage.removeItem(AK);}catch(e){}updAdmin();render();}
-  else{document.getElementById("pwd-input").value="";document.getElementById("pwd-error").textContent="";openM("modal-pwd");setTimeout(()=>document.getElementById("pwd-input").focus(),80);}
-});
-function tryLogin(){
-  const v=document.getElementById("pwd-input").value;
-  if(h(v)===CORRECT){isAdmin=true;try{localStorage.setItem(AK,CORRECT);}catch(e){}closeM("modal-pwd");updAdmin();render();flash();}
-  else{document.getElementById("pwd-error").textContent="Неверный пароль";document.getElementById("pwd-input").value="";document.getElementById("pwd-input").focus();}
-}
-document.getElementById("pwd-submit").addEventListener("click",tryLogin);
-document.getElementById("pwd-input").addEventListener("keydown",e=>{if(e.key==="Enter")tryLogin();});
-
-function openM(id){document.getElementById(id).classList.add("show");}
-function closeM(id){document.getElementById(id).classList.remove("show");}
-document.querySelectorAll("[data-close]").forEach(el=>el.addEventListener("click",()=>closeM(el.dataset.close)));
-document.querySelectorAll(".overlay").forEach(el=>el.addEventListener("click",e=>{if(e.target===el)closeM(el.id);}));
-document.addEventListener("keydown",e=>{if(e.key==="Escape")document.querySelectorAll(".overlay.show").forEach(el=>closeM(el.id));});
-
-document.getElementById("pills").addEventListener("click",e=>{
-  const b=e.target.closest(".pill");if(!b)return;
-  cat=b.dataset.cat;document.querySelectorAll(".pill").forEach(x=>x.classList.toggle("active",x===b));render();
-});
-document.getElementById("search").addEventListener("input",e=>{q=e.target.value;render();});
-document.getElementById("only-in").addEventListener("change",e=>{onlyIn=e.target.checked;render();});
-
-updAdmin();render();
+render();
 </script>
 </body>
 </html>
